@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { NivelEducacional } from 'src/app/model/nivel-educacional';
 import { Usuario } from 'src/app/model/usuario';
@@ -24,7 +24,7 @@ export class InicioPage implements AfterViewInit {
   
   public listaNivelesEducacionales = NivelEducacional.getNivelesEducacionales();
   
-  public usuario: Usuario = new Usuario();
+  public usuario: Usuario;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,16 +32,8 @@ export class InicioPage implements AfterViewInit {
     private alertController: AlertController,
     private animationController: AnimationController) 
   {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state) {
-          this.usuario = nav.extras.state['usuario'];
-          return;
-        }
-      }
-      this.router.navigate(['/login']);
-    });
+    this.usuario = new Usuario();
+    this.usuario.recibirUsuario(this.activatedRoute, this.router);
   }
 
   ngAfterViewInit() {
@@ -51,14 +43,14 @@ export class InicioPage implements AfterViewInit {
 
   public actualizarNivelEducacional(event: any) {
     this.usuario.nivelEducacional 
-      = NivelEducacional.findNivelEducacional(event.detail.value)!;
+      = NivelEducacional.buscarNivelEducacional(event.detail.value)!;
   }
 
   limpiarPagina() {
     this.usuario.cuenta = '';
     this.usuario.nombre = '';
     this.usuario.apellido = '';
-    this.usuario.nivelEducacional = NivelEducacional.findNivelEducacional(1)!;
+    this.usuario.nivelEducacional = NivelEducacional.buscarNivelEducacional(1)!;
     this.usuario.fechaNacimiento = undefined;
   }
 
@@ -152,7 +144,7 @@ export class InicioPage implements AfterViewInit {
         <b>Usuario:    </b> ${this.usuario.correo} <br>
         <b>Nombre:     </b> ${this.asignado(this.usuario.nombre)} <br>
         <b>Apellido:   </b> ${this.asignado(this.usuario.apellido)} <br>
-        <b>Educación:  </b> ${this.asignado(this.usuario.nivelEducacional.getTextoNivelEducacional())} <br>
+        <b>Educación:  </b> ${this.asignado(this.usuario.nivelEducacional.getEducacion())} <br>
         <b>Nacimiento: </b> ${this.usuario.getFechaNacimiento()}
       </small>
     `;
@@ -169,8 +161,7 @@ export class InicioPage implements AfterViewInit {
   }
 
   navegar(pagina: string) {
-    // const extras: NavigationExtras = {state: {usuario: this.usuario.cuenta}};
-    this.usuario.navegarEnviandousuario(this.router, pagina);
+    this.usuario.navegarEnviandoUsuario(this.router, pagina);
   }
 
 }

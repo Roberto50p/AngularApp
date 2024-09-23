@@ -52,12 +52,6 @@ export class Usuario extends Persona {
       usu => usu.cuenta === cuenta && usu.password === password);
   }
 
-  public static buscarUsuarioValidoporcorreo(correo: string): Usuario | undefined {
-    return Usuario.getListaUsuarios().find(
-      usu=> usu.correo === correo
-    );
-  }
-
   public validarCuenta(): string {
     if (this.cuenta.trim() === '') {
       return 'Para ingresar al sistema debe seleccionar una cuenta.';
@@ -86,14 +80,6 @@ export class Usuario extends Persona {
     error = this.validarPassword();
     if (error) return error;
     const usu = Usuario.buscarUsuarioValido(this.cuenta, this.password);
-    if (!usu) return 'Las credenciales del usuario son incorrectas.';
-    return '';
-  }
-
-  public validarUsuariosincontraseña(): string {
-    let error = this.validarCuenta();
-    if (error) return error;
-    const usu = Usuario.buscarUsuarioValidoporcorreo(this.cuenta);
     if (!usu) return 'Las credenciales del usuario son incorrectas.';
     return '';
   }
@@ -179,6 +165,9 @@ export class Usuario extends Persona {
         password: this.password,
       }
     }
-    router.navigate([pagina], navigationExtras);
+    if (this.cuenta !== '' && this.password !== '')
+      router.navigate([pagina], navigationExtras);
+    else
+      router.navigate([pagina]);
   }
 }

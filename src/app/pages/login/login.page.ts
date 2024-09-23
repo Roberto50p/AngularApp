@@ -30,8 +30,7 @@ export class LoginPage {
       return;
     } 
     this.mostrarMensajeEmergente('¡Bienvenido(a) al Sistema de Asistencia DUOC!');
-    // const extras: NavigationExtras = {state: { usuario: this.usuario.cuenta }};
-    this.usuario.navegarEnviandousuario(this.router, '/inicio');
+    this.usuario.navegarEnviandoUsuario(this.router, '/inicio');
   }
 
   async mostrarMensajeEmergente(mensaje: string, duracion?: number) {
@@ -40,6 +39,10 @@ export class LoginPage {
         duration: duracion? duracion: 2000
       });
     toast.present();
+  }
+
+  navegar(pagina: string) {
+    this.usuario.navegarEnviandoUsuario(this.router, pagina);
   }
 
 }
