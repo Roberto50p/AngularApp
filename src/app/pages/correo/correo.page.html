@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-padding-top ion-text-center" color="primary">
+      <ion-label>
+        <img src="../../../assets/icon/logo_duoc.png" alt="20px">
+        <h2>Sistema de Asistencia DUOC</h2>
+      </ion-label>
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-content >
+    
+    <div class="centrar">
+      <div class="enmarcar">
+        <ion-card class="ion-text-center ion-padding-vertical">
+          <ion-title class="ion-padding-top ion-text-center">
+            <h2>Sistema de Asistencia DUOC</h2>
+            <ion-label>
+  
+              <h2>Recuperar Contraseña</h2>
+              <br>
+              <h3 >Paso 1: Ingresa tu correo</h3>
+  
+            </ion-label>
+          </ion-title>
+          <br><br>
+          <ion-item>
+            <ion-label position="floating">Correo Electrónico</ion-label>
+            <ion-input type="email" [(ngModel)]="email"></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="full" (click)="recuperarContrasena()">Recuperar Contraseña</ion-button>
+              <br>
+              <ion-button expand="full" (click)="iniciarSesion()">Iniciar Sesión</ion-button>
+            </ion-col>
+          </ion-row>
+        
+          
+
+          
+        </ion-card>
+       
+        
+      </div>-
+    </div>
+    
+  
+  </ion-content>
+</ion-header>
+

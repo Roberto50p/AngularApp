@@ -1,0 +1,7 @@
+{
+  "name": "ContraseñaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

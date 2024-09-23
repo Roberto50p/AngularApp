@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Asistencia DUOC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <!-- Cuenta -->
+    <ion-item>
+      <ion-input [(ngModel)]="usuario.cuenta" label="Cuenta" labelPlacement="floating" placeholder="Ingrese su Cuenta"></ion-input>
+    </ion-item>
+
+    <!-- Contraseña -->
+    <ion-item>
+      <ion-input [(ngModel)]="usuario.password" type="password" label="Contraseña" labelPlacement="floating" placeholder="Ingrese su Contraseña"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <br><br>
+
+  <!-- BOTON INGRESAR -->
+  <ion-button (click)="ingresar()">
+    <ion-icon slot="start" name="person"></ion-icon>
+    Ingresar
+  </ion-button>
+
+</ion-content>
