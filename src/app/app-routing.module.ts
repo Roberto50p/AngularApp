@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'incorrecto',
     loadChildren: () => import('./pages/incorrecto/incorrecto.module').then( m => m.IncorrectoPageModule)
   },
+  {
+    path: 'datos',
+    loadChildren: () => import('./pages/datos/datos.module').then( m => m.DatosPageModule)
+  }
 ];
 
 @NgModule({

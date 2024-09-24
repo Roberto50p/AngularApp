@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title #titulo class="ion-text-left ion-text font-size-18">
+      <div>Sistema asistencia Duoc</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content [fullscreen]="true" class="ion-padding-horizontal page"
+  #page>
+    <ion-title class="ion-padding-top">
+      <ion-item>
+        <ion-label>
+          <h1 class="ion-text-center">
+            Bienvenido(a) {{usuario.nombre}}!
+          </h1>
+        </ion-label>
+      </ion-item>
+    </ion-title>
+
+    <b class="ion-text-center">
+      <h4>Mis Datos</h4>
+    </b>
+
+    <ion-item #itemCuenta>
+      <ion-input
+        [(ngModel)]="usuario.cuenta"
+        labelPlacement="floating" label="Cuenta" placeholder="Ej: atorres"></ion-input>
+    </ion-item>
+
+    <ion-item #itemNombre>
+      <ion-input
+        [(ngModel)]="usuario.cuenta"
+        labelPlacement="floating" label="Nombre" placeholder="Ej: Pedro"></ion-input>
+    </ion-item>
+
+    <ion-item #itemApellido>
+      <ion-input
+        [(ngModel)]="usuario.cuenta"
+        labelPlacement="floating" label="Apellido" placeholder="Ej: Zuñiga"></ion-input>
+    </ion-item>
+
+    <ion-item #itemCorreo>
+      <ion-input
+        [(ngModel)]="usuario.correo"
+        labelPlacement="floating" label="Correo" placeholder="Ej: alo.siquien@duocuc.cl"></ion-input>
+    </ion-item>
+
+    <ion-item #itemPreguntaSecreta>
+      <ion-input
+        [(ngModel)]="usuario.preguntaSecreta"
+        labelPlacement="floating" label="Pregunta Secreta" placeholder="{{usuario.preguntaSecreta}}"></ion-input>
+    </ion-item>
+
+    <ion-item #itemPreguntaSecreta>
+      <ion-input
+        [(ngModel)]="usuario.respuestaSecreta"
+        labelPlacement="floating" label="Respuesta Secreta" placeholder="{{usuario.respuestaSecreta}}"></ion-input>
+    </ion-item>
+
+    <ion-item #itemEducacion>
+      <ion-label position="floating">
+        Educación
+      </ion-label>
+        <ion-select placeholder="seleccione nivel"
+        [(ngModel)]="usuario.nivelEducacional!.id">
+          <ion-select-option *ngFor="let nivel of listaNivelesEducacionales"
+            [value]="nivel.id">
+            {{nivel.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-item #itemFechaNacimiento>
+      <table>
+        <tr>
+          <td class="font-size-12" >
+            Nacimiento
+          </td>
+          <td class="cell-align-right">
+            <input matInput
+            [matDatepicker]="fechaNacimiento"
+            [(ngModel)]="usuario.fechaNacimiento"
+            placeholder="dd/mm/yyyy"
+            class="date-width">
+          </td>
+          <td class="cell-width-0">
+            <mat-datepicker-toggle
+              matSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+              <mat-datepicker #fechaNacimiento></mat-datepicker>
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+
+    <ion-item #itemPassword>
+      <ion-input
+        [(ngModel)]="usuario.preguntaSecreta"
+        labelPlacement="floating" label="Contraseña" placeholder="Ingrese su contraseña nueva"></ion-input>
+    </ion-item>
+
+    <ion-item #itemPassword>
+      <ion-input
+        [(ngModel)]="usuario.preguntaSecreta"
+        labelPlacement="floating" label="Repetir Contraseña" placeholder="Repita la contraseña"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <!-- <ion-col col-3>
+          <ion-button (click)="limpiar1()" shape="block" size="small">Limpiar 1</ion-button>
+        </ion-col>
+        <ion-col col-3>
+          <ion-button (click)="createPageTurnAnimation()" shape="block" size="small">Limpiar 2</ion-button>
+        </ion-col>
+        <ion-col col-3>
+          <ion-button (click)="mostrarDatosPersonales()" shape="block" size="small">Limpiar 1</ion-button>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+    <b class="ion-text-center">
+      <ion-col col-3>
+        <ion-button (click)="createPageTurnAnimation()" shape="block" size="small">Actualizar</ion-button>
+      </ion-col>
+      <h4>
+        <br>
+        <a href="">Cerrar sesión</a>
+      </h4>
+    </b>
+  </ion-content>
+  
