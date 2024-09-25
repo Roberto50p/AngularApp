@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
-// import jsQR, { QRCode } from 'jsqr';
+import jsQR, { QRCode } from 'jsqr';
 import { Asistencia } from 'src/app/interfaces/asistencia';
 
 @Component({
@@ -25,47 +25,47 @@ export class LeerqrPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.comenzarEscaneoQR();
+    this.comenzarEscaneoQR();
   }
 
-  // public async comenzarEscaneoQR() {
-  //   const mediaProvider: MediaProvider = await navigator.mediaDevices.getUserMedia({
-  //     video: {facingMode: 'environment'}
-  //   });
-  //   this.video.nativeElement.srcObject = mediaProvider;
-  //   this.video.nativeElement.setAttribute('playsinline', 'true');
-  //   this.video.nativeElement.play();
-  //   this.escaneando = true;
-  //   requestAnimationFrame(this.verificarVideo.bind(this));
-  // }
+  public async comenzarEscaneoQR() {
+    const mediaProvider: MediaProvider = await navigator.mediaDevices.getUserMedia({
+      video: {facingMode: 'environment'}
+    });
+    this.video.nativeElement.srcObject = mediaProvider;
+    this.video.nativeElement.setAttribute('playsinline', 'true');
+    this.video.nativeElement.play();
+    this.escaneando = true;
+    requestAnimationFrame(this.verificarVideo.bind(this));
+  }
 
-  // async verificarVideo() {
-  //   if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
-  //     if (this.obtenerDatosQR() || !this.escaneando) return;
-  //     requestAnimationFrame(this.verificarVideo.bind(this));
-  //   } else {
-  //     requestAnimationFrame(this.verificarVideo.bind(this));
-  //   }
-  // }
+  async verificarVideo() {
+    if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
+      if (this.obtenerDatosQR() || !this.escaneando) return;
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    } else {
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    }
+  }
 
-  // public obtenerDatosQR(): boolean {
-  //   const w: number = this.video.nativeElement.videoWidth;
-  //   const h: number = this.video.nativeElement.videoHeight;
-  //   this.canvas.nativeElement.width = w;
-  //   this.canvas.nativeElement.height = h;
-  //   const context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d', { willReadFrequently: true });
-  //   context.drawImage(this.video.nativeElement, 0, 0, w, h);
-  //   const img: ImageData = context.getImageData(0, 0, w, h);
-  //   let qrCode: QRCode | null = jsQR(img.data, w, h, { inversionAttempts: 'dontInvert' });
-  //   if (qrCode) {
-  //     if (qrCode.data !== '') {
-  //       this.escaneando = false;
-  //       this.mostrarDatosQROrdenados(qrCode.data);
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
+  public obtenerDatosQR(): boolean {
+    const w: number = this.video.nativeElement.videoWidth;
+    const h: number = this.video.nativeElement.videoHeight;
+    this.canvas.nativeElement.width = w;
+    this.canvas.nativeElement.height = h;
+    const context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d', { willReadFrequently: true });
+    context.drawImage(this.video.nativeElement, 0, 0, w, h);
+    const img: ImageData = context.getImageData(0, 0, w, h);
+    let qrCode: QRCode | null = jsQR(img.data, w, h, { inversionAttempts: 'dontInvert' });
+    if (qrCode) {
+      if (qrCode.data !== '') {
+        this.escaneando = false;
+        this.mostrarDatosQROrdenados(qrCode.data);
+        return true;
+      }
+    }
+    return false;
+  }
 
   public mostrarDatosQROrdenados(datosQR: string): void {
     this.datosQR = datosQR;
@@ -77,7 +77,7 @@ export class LeerqrPage implements OnInit {
   }
 
   navegar(pagina: string) {
-    this.usuario.navegarEnviandoUsuario(this.router, pagina);
+    this.usuario.navegarEnviandousuario(this.router, pagina);
   }
 
 }
