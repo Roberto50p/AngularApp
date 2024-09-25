@@ -37,8 +37,6 @@ export class InicioPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.animarTituloIzqDer();
-    this.animarVueltaDePagina();
   }
 
   public actualizarNivelEducacional(event: any) {

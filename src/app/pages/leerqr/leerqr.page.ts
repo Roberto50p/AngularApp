@@ -77,7 +77,7 @@ export class LeerqrPage implements OnInit {
   }
 
   navegar(pagina: string) {
-    this.usuario.navegarEnviandousuario(this.router, pagina);
+    this.usuario.navegarEnviandoUsuario(this.router, pagina);
   }
 
 }

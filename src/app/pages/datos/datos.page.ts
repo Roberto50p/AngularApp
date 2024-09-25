@@ -131,5 +131,12 @@ export class DatosPage implements OnInit, AfterViewInit {
     const year = date.getFullYear(); // Obtener el año
     return `${day}/${month}/${year}`;
   }
+
+  navegar(pagina: string) {
+    this.usuario.navegarEnviandoUsuario(this.router, pagina);
+  }
+
 }
+
+  
     
