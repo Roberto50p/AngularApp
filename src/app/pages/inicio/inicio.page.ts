@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { NivelEducacional } from 'src/app/model/nivel-educacional';
 import { Usuario } from 'src/app/model/usuario';
 import { AnimationController} from '@ionic/angular';
+
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import jsQR, { QRCode } from 'jsqr';
 import { Asistencia } from 'src/app/interfaces/asistencia';
@@ -30,7 +31,7 @@ export class InicioPage implements AfterViewInit {
   
   public usuario: Usuario;
   public asistencia: Asistencia | undefined = undefined;
-  public escaneando = false;
+  public escaneando :boolean =  false;
   public datosQR: string = '';
 
   constructor(
@@ -44,7 +45,7 @@ export class InicioPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.comenzarEscaneoQR();
+    
   }
 
   public actualizarNivelEducacional(event: any) {
@@ -211,6 +212,20 @@ export class InicioPage implements AfterViewInit {
   public mostrarDatosQROrdenados(datosQR: string): void {
     this.datosQR = datosQR;
     this.asistencia = JSON.parse(datosQR);
+  
+    const navigationExtras: NavigationExtras = {
+      state: {
+        qrData: JSON.stringify(this.asistencia),
+        cuenta: this.usuario.cuenta,
+        password: this.usuario.password,
+        nombre: this.usuario.nombre,
+        apellido: this.usuario.apellido,
+        nivelEducacional: this.usuario.nivelEducacional.getEducacion(),
+        fechaNacimiento: this.usuario.getFechaNacimiento()
+      }
+    };
+  
+    this.router.navigate(['/leerqr'], navigationExtras);
   }
 
   public detenerEscaneoQR(): void {

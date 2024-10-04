@@ -1,48 +1,37 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="background-style"></ion-content>
   <div class="centrar">
     <div class="enmarcar-login">
       <ion-card class="ion-text-center">
-        
-        <img alt="DUOC" src="../../../assets/img/pao.jpg" class="foto-portada" />
-      
         <ion-card-content>
-
           <ion-card-header>
-            <ion-toolbar>
               <h1>Sistema de Asistencia DUOC</h1>
               <h2>Inicio de sesión</h2>
-            </ion-toolbar>
+          
           </ion-card-header>
 
-          <ion-item>
+          <ion-item class="input-item">
             <ion-input [(ngModel)]="usuario.cuenta" 
                 label="Cuenta" labelPlacement="floating"
                 placeholder="Ej: atorres"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="input-item">
             <ion-input [(ngModel)]="usuario.password" 
                 label="Contraseña" labelPlacement="floating" type="password"
                 placeholder="Ej: 1234"></ion-input>
           </ion-item>
 
           <div class="ion-margin-top content-center">
-            <ion-button shape="round" size="small" (click)="ingresar()" class="ancho-boton">
+            <ion-button shape="round" size="small" (click)="ingresar()" class="ancho-boton btn-azul">
               Ingresar
             </ion-button>
-            <ion-button shape="round" size="small" class="ancho-boton">
+            <ion-button shape="round" size="small" class="ancho-boton btn-amarillo">
               Crea tu cuenta
             </ion-button>
-            <br>
-            <ion-item>
               <ion-button (click)="navegar('/correo')" fill="clear">Olvidé mi contraseña</ion-button>
-            </ion-item>
+          
           </div>
-            
         </ion-card-content>
-
       </ion-card>
-
     </div>
   </div>
-</ion-content>

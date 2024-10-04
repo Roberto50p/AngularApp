@@ -1,9 +1,84 @@
+.background-style {
+  --background: url('../../../assets/img/pao.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .enmarcar-login {
   max-width: 400px;
   width: 100%;
   margin: auto;
+  background-color: rgb(3, 3, 3); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  border-radius: 16px;
+  padding: 30px;
+}
+
+ion-card {
+  background-color: white; 
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+//sistema de asistencia 
+.toolbar-custom {
+  background-color: transparent;
+  color: #00000000;
+  text-align: center;
+}
+
+//cuenta/contraseña
+.input-item {
+  --background: white;
+  border-bottom: 0,05px solid black; 
+  --placeholder-color: black; 
+  --color: black; 
+
+  ion-input {
+    --highlight-color-focused: #ffcc00; 
+  }
 }
 
 .ancho-boton {
-  width: 140px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 15px;
+  padding: 5px 15px;
+
+  &.btn-azul {
+    --background: rgba(0, 85, 165, 0.7);
+    color: white;
+
+    &:hover {
+      --background: rgba(0, 85, 165, 1);
+      transition: background-color 0.5s ease;
+    }
+  }
+
+  &.btn-amarillo {
+    --background: rgba(255, 204, 0, 0.7);
+    color: white;
+
+    &:hover {
+      --background: rgba(255, 204, 0, 1);
+      transition: background-color 0.5s ease;
+    }
+  }
+}
+
+.reset-password ion-button {
+  --color: #ffcc00;
+  text-decoration: underline;
+}
+
+.ion-margin-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

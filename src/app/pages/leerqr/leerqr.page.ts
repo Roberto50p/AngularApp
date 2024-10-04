@@ -26,6 +26,20 @@ export class LeerqrPage implements OnInit {
 
   ngOnInit() {
     this.comenzarEscaneoQR();
+    this.activatedRoute.queryParams.subscribe(() => {
+      const nav = this.router.getCurrentNavigation();
+      if (nav?.extras.state) {
+        const qrData = nav.extras.state['qrData'];
+        const cuenta = nav.extras.state['cuenta'];
+        const password = nav.extras.state['password'];
+        const nombre = nav.extras.state['nombre'];
+        const apellido = nav.extras.state['apellido'];
+        const nivelEducacional = nav.extras.state['nivelEducacional'];
+        const fechaNacimiento = nav.extras.state['fechaNacimiento'];
+  
+        console.log(qrData, cuenta, password, nombre, apellido, nivelEducacional, fechaNacimiento);
+      }
+    });
   }
 
   public async comenzarEscaneoQR() {
@@ -79,5 +93,6 @@ export class LeerqrPage implements OnInit {
   navegar(pagina: string) {
     this.usuario.navegarEnviandoUsuario(this.router, pagina);
   }
+  
 
 }

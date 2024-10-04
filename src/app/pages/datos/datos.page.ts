@@ -30,16 +30,18 @@ export class DatosPage implements OnInit, AfterViewInit {
     private animationController : AnimationController
   ) 
   {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state){
-          this.usuario = nav.extras.state ['usuario'];
-          return;
-        }
-      }
-      // this.router.navigate(['/login']); 
-    })
+    this.usuario = new Usuario();
+    this.usuario.recibirUsuario(this.activatedRoute, this.router);
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   const nav = this.router.getCurrentNavigation();
+    //   if (nav) {
+    //     if (nav.extras.state){
+    //       this.usuario = nav.extras.state ['usuario'];
+    //       return;
+    //     }
+    //   }
+    //   // this.router.navigate(['/login']); 
+    // })
   }
 
   ngOnInit(): void {

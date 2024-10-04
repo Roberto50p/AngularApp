@@ -1,7 +1,6 @@
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NivelEducacional } from './nivel-educacional';
 import { Persona } from "./persona";
-
 export class Usuario extends Persona {
 
   public cuenta: string;
@@ -170,4 +169,5 @@ export class Usuario extends Persona {
     else
       router.navigate([pagina]);
   }
+  
 }

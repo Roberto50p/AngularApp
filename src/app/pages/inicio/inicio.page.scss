@@ -24,3 +24,26 @@ table {
 .cell-width-0 {
   width: 0px;
 }
+.centrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.centrar-contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.enmarcar {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
